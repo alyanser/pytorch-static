@@ -1,0 +1,17 @@
+#!/usr/bin/bash
+
+ARGS=()
+ARGS+=("-GNinja")
+ARGS+=("-CMAKE_BUILD_TYPE=Debug")
+ARGS+=("-DBUILD_SHARED_LIBS=OFF")
+ARGS+=("-DBUILD_CAFFE2_MOBILE=OFF")
+ARGS+=("-DCAFFE2_USE_MSVC_STATIC_RUNTIME=ON")
+ARGS+=("-DMSVC_Z7_OVERRIDE=ON")
+ARGS+=("-DUSE_CUDA=OFF")
+ARGS+=("-DBUILD_PYTHON=OFF")
+ARGS+=("-DBUILD_TEST=OFF")
+
+cd pytorch
+mkdir build -p && cd build
+cmake .. ${ARGS[@]}
+ninja
