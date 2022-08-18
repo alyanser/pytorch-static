@@ -1,7 +1,6 @@
 #!/usr/bin/bash
 
 export BUILD_SHARED_LIBS=OFF
-export CAFFE2_USE_MSVC_STATIC_RUNTIME=ON
 
 # export CMAKE_BUILD_TYPE=DEBUG
 
