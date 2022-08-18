@@ -10,6 +10,7 @@ ARGS+=("-DMSVC_Z7_OVERRIDE=ON")
 ARGS+=("-DUSE_CUDA=OFF")
 ARGS+=("-DBUILD_PYTHON=OFF")
 ARGS+=("-DBUILD_TEST=OFF")
+ARGS+=("-DUSE_MKLDNN=OFF")
 
 cd pytorch
 mkdir build -p && cd build
