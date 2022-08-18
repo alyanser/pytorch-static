@@ -27,9 +27,6 @@ $env:USE_CPP_CODE_COVERAGE="OFF"
 $env:USE_CUDA="OFF"
 $env:USE_ROCM="OFF"
 
-# temp: there's some bugs in macro expanding in some third_party libs
-$env:CMAKE_CXX_FLAGS="-Wno-error=return-type"
-
 $env:USE_EIGEN_FOR_BLAS="OFF"
 $env:USE_FBGEMM="OFF"
 $env:USE_FBGEMM="OFF"

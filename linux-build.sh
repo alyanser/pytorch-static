@@ -28,9 +28,6 @@ export USE_CPP_CODE_COVERAGE=OFF
 export USE_CUDA=OFF
 export USE_ROCM=OFF
 
-# temp: there's some bugs in macro expanding in some third_party libs
-export CMAKE_CXX_FLAGS="-Wno-error=return-type"
-
 export USE_EIGEN_FOR_BLAS=OFF
 export USE_FBGEMM=OFF
 export USE_FBGEMM=OFF
