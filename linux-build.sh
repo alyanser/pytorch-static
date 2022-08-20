@@ -1,3 +1,5 @@
+#!/usr/bin/bash
+
 GENERATOR="Ninja"
 PYTORCH_DIR="pytorch"
 
@@ -35,3 +37,6 @@ cd $PYTORCH_DIR
 cmake . -B build ${ARGS[@]}
 cd build
 ${GENERATOR,,}
+
+echo "permission required to install"
+sudo ${GENERATOR,,} install
