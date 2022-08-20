@@ -1,3 +1,0 @@
-[submodule "pytorch"]
-	path = pytorch
-	url = https://github.com/pytorch/pytorch

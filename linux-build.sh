@@ -1,7 +1,8 @@
-#!/usr/bin/bash
+GENERATOR="Ninja"
+PYTORCH_DIR="pytorch"
 
 ARGS=()
-ARGS+=("-GNinja")
+ARGS+=("-G$GENERATOR")
 ARGS+=("-DCMAKE_BUILD_TYPE=MinSizeRel")
 ARGS+=("-DBUILD_SHARED_LIBS=OFF")
 ARGS+=("-DBUILD_CAFFE2_MOBILE=OFF")
@@ -12,7 +13,7 @@ ARGS+=("-DBUILD_PYTHON=OFF")
 ARGS+=("-DBUILD_TEST=OFF")
 ARGS+=("-DUSE_MKLDNN=OFF")
 
-cd pytorch
-mkdir build -p && cd build
-cmake .. ${ARGS[@]}
-ninja
+cd $PYTORCH_DIR
+cmake . -B build ${ARGS[@]}
+cd build
+${GENERATOR,,}
