@@ -2,8 +2,12 @@
 
 GENERATOR="Ninja"
 PYTORCH_DIR="pytorch"
+PYTHON_VER=3.10
 
 ARGS=()
+ARGS+=("-DPYTHON_EXECUTABLE:FILEPATH=/usr/bin/python${PYTHON_VER}")
+ARGS+=("-DPYTHON_INCLUDE_DIR:FILEPATH=/usr/include/python${PYTHON_VER}")
+ARGS+=("-DPYTHON_LIBRARY:FILEPATH=/usr/lib/libpython${PYTHON_VER}.so")
 ARGS+=("-G$GENERATOR")
 ARGS+=("-DCMAKE_BUILD_TYPE=MinSizeRel")
 ARGS+=("-DBUILD_SHARED_LIBS=OFF")
@@ -37,6 +41,3 @@ cd $PYTORCH_DIR
 cmake . -B build ${ARGS[@]}
 cd build
 ${GENERATOR,,}
-
-echo "permission required to install"
-sudo ${GENERATOR,,} install
