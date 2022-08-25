@@ -12,7 +12,7 @@ ARGS+=("-DPYTHON_INCLUDE_DIR:PATH=/usr/include/python${PYTHON_VER}")
 ARGS+=("-DPYTHON_LIBRARY:FILEPATH=/usr/lib/libpython${PYTHON_VER}.so")
 
 ARGS+=("-G$GENERATOR")
-ARGS+=("-DCMAKE_BUILD_TYPE=Debug")
+ARGS+=("-DCMAKE_BUILD_TYPE=MinSizeRel")
 
 ARGS+=("-DBUILD_SHARED_LIBS=OFF")
 ARGS+=("-DBUILD_CAFFE2=OFF")
@@ -21,9 +21,9 @@ ARGS+=("-DBUILD_TEST=OFF")
 ARGS+=("-DBUILD_LAZY_TS_BACKEND=OFF")
 
 ARGS+=("-DUSE_FBGEMM=ON")
+ARGS+=("-DUSE_NNPACK=ON")
+ARGS+=("-DBUILD_CUSTOM_PROTOBUF=ON")
 
-ARGS+=("-DUSE_NNPACK=OFF")
-ARGS+=("-DBUILD_CUSTOM_PROTOBUF=OFF")
 ARGS+=("-DUSE_NCCL=OFF")
 ARGS+=("-DUSE_CUDA=OFF")
 ARGS+=("-DUSE_MKLDNN=OFF")
@@ -38,12 +38,12 @@ ARGS+=("-DUSE_TENSORPIPE=OFF")
 ARGS+=("-DUSE_PYTORCH_QNNPACK=OFF")
 ARGS+=("-DUSE_QNNPACK=OFF")
 ARGS+=("-DUSE_FFTW=OFF")
-ARGS+=("-DCMAKE_INSTALL_PREFIX:PATH=${PWD}/example/pytorch")
+ARGS+=("-DCMAKE_INSTALL_PREFIX:PATH=${PWD}/${PYTORCH_DIR}/build/install")
 
-# remove the '-Werror=return-type' flag that makes some third party libs fail to build
-patch ${PYTORCH_DIR}/CMakeLists.txt -i remove-flag.patch
+patch ${PYTORCH_DIR}/CMakeLists.txt -i general-flags.patch
+patch ${PYTORCH_DIR}/third_party/fbgemm/CMakeLists.txt -i fbgemm-flags.patch
 
 cd $PYTORCH_DIR
 cmake . -B build ${ARGS[@]}
 cd build
-cmake --build . --target install
+cmake --build . --target install -j3
