@@ -41,6 +41,10 @@ ARGS+=("-DUSE_PYTORCH_QNNPACK=OFF")
 ARGS+=("-DUSE_QNNPACK=OFF")
 ARGS+=("-DCMAKE_INSTALL_PREFIX:PATH=${PWD}/example/pytorch")
 
+
+# remove the '-Werror=return-type' flag that makes some third party libs fail to build
+patch ${PYTORCH_DIR}/CMakeLists.txt -i remove-flag.patch
+
 cd $PYTORCH_DIR
 cmake . -B build ${ARGS[@]}
 cd build
