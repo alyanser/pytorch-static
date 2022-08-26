@@ -1,0 +1,4 @@
+123c123
+<   string(APPEND CMAKE_CXX_FLAGS " -Werror")
+---
+>   string(APPEND CMAKE_CXX_FLAGS " -Wno-error")

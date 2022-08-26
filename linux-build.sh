@@ -46,4 +46,4 @@ patch ${PYTORCH_DIR}/third_party/fbgemm/CMakeLists.txt -i fbgemm-flags.patch
 cd $PYTORCH_DIR
 cmake . -B build ${ARGS[@]}
 cd build
-cmake --build . --target install -j3
+cmake --build . --target install
